@@ -1,4 +1,8 @@
-# Private directory
+# My Private Spacemacs Layer
+
+I will include my private conf here.
+
+# Guide to create private layer
 
 The content of this directory is ignored by Git. This is the default place
 where to store your private configuration layers.
