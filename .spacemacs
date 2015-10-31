@@ -209,6 +209,11 @@ layers configuration. You are free to put any user code."
                                  (text-scale-adjust
                                   (- text-scale-mode-amount))
                                  (text-scale-mode -1)))
+
+  ;; shell configs
+  ;; load .bashrc for shell commands( like run bundel exec rails server)
+  (setq shell-file-name "bash")
+  (setq shell-command-switch "-ic")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
