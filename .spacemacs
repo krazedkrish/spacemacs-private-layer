@@ -47,6 +47,7 @@ values."
      ;; private-layer
      highlight-symbol
      my-extra
+     my-rails
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -188,6 +189,9 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  ;; Loads some modes on startup
+  (indent-guide-global-mode 1)
 
   ;; JSX in `web-mode`
   (add-to-list 'auto-mode-alist '("\\.jsx" . web-mode))
