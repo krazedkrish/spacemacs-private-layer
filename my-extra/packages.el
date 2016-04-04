@@ -1,4 +1,4 @@
-;;; packages.el --- my-extra Layer packages File for Spacemacs
+;;; extensions.el --- my-extra Layer extensions File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
@@ -10,21 +10,50 @@
 ;;
 ;;; License: GPLv3
 
-;; List of all packages to install and/or initialize. Built-in packages
-;; which require an initialization must be listed explicitly in the list.
 (setq my-extra-packages
-    '(
-      ;; package names go here
-      ))
+      '(
+        (my-extra :location local)
+        ))
 
-;; List of packages to exclude.
-(setq my-extra-excluded-packages '())
-
-;; For each package, define a function my-extra/init-<package-name>
+;; For each extension, define a function my-extra/init-<extension-name>
 ;;
-;; (defun my-extra/init-my-package ()
-;;   "Initialize my package"
-;;   )
+(defun my-extra/init-my-extra()
+;;   "Initialize my extension"
+
+  ;; for term-toggle
+  (require 'term-toggle)
+  ;; bind key
+  (global-set-key [(control f12)] 'term-toggle)
+
+  ;; for hideshow-viz
+  ;; hideshowviz settings
+  ;; enable hide show viz for code folding
+  (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+
+  (autoload 'hideshowvis-minor-mode
+    "hideshowvis"
+    "Will indicate regions foldable with hideshow in the fringe."
+    'interactive)
+
+  (dolist (hook (list 'emacs-lisp-mode-hook
+                      'c++-mode-hook
+                      'web-mode-hook
+                      'json-mode-hook
+                      'js2-mode-hook
+                      'python-mode-hook
+                      'ruby-mode-hook))
+    (add-hook hook 'hideshowvis-enable))
+
+  ;; If enabling hideshowvis-minor-mode is slow on your machine use M-x,
+  ;; customize-option, hideshowvis-ignore-same-line and set it to nil. This will
+  ;; then display - icons for foldable regions of one line, too but is faster
+  ;;
+  ;; To enable displaying a + symbol in the fringe for folded regions,
+  ;; use:
+  ;;
+  ;; (hideshowvis-symbols)
+  (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
+  )
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
