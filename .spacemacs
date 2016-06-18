@@ -53,7 +53,10 @@ values."
      markdown
      org
      python
-     ranger
+     ;; ranger
+     (ranger :variables
+             ranger-show-preview t
+             ranger-show-literal nil)
      ruby
      ruby-on-rails
      ;; (shell :variables
