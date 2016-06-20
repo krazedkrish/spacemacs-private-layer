@@ -20,10 +20,9 @@
 (defun my-extra/init-my-extra()
 ;;   "Initialize my extension"
 
-  ;; for term-toggle
-  (require 'term-toggle)
+  ;; for pop up ansi multi term
   ;; bind key
-  (global-set-key [(control f12)] 'term-toggle)
+  (global-set-key [(control f12)] 'spacemacs/shell-pop-multiterm)
 
   ;; for hideshow-viz
   ;; hideshowviz settings
