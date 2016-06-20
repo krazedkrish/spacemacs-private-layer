@@ -43,7 +43,9 @@ values."
      ;; chrome
      ;;django
      emacs-lisp
+     emoji
      floobits
+     games
      git
      ;gtags
      helm
@@ -71,11 +73,13 @@ values."
      ;; private-layer
      highlight-symbol
      my-extra
+     my-gtags
      my-rails
      mode-icons
+     phabricator
+     ;;simple-rtm
      chrome
      ;;extravagant-powerline
-     my-gtags
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
