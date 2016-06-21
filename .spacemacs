@@ -71,6 +71,7 @@ values."
      yaml
 
      ;; private-layer
+     entertainment
      highlight-symbol
      my-extra
      my-gtags
