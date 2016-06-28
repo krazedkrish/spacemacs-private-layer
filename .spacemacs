@@ -48,6 +48,7 @@ values."
      games
      git
      ;gtags
+     gnus
      helm
      html
      javascript
@@ -62,7 +63,7 @@ values."
      ruby
      ruby-on-rails
      (shell :variables
-            shell-default-height 30
+            shell-default-height 40
             shell-default-position 'bottom)
      shell-scripts
      spell-checking
@@ -361,3 +362,15 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(send-mail-function (quote smtpmail-send-it)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

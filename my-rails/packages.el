@@ -16,6 +16,7 @@
     '(
       ;; package names go here
       evil-rails
+      ruby-guard
       ))
 
 ;; List of packages to exclude.
@@ -28,7 +29,20 @@
 ;;   "Initialize my package"
 ;;   )
 (defun my-rails/init-evil-rails()
-)
+  (use-package evil-rails
+    :defer t
+    ;;  :init 
+    ;; (progn
+    ;;   (add-hook 'projectile-mode-hook 'evil-rails))
+    ))
+
+(defun my-rails/init-ruby-guard()
+  (use-package ruby-guard
+    :defer t
+    ;;  :init 
+    ;; (progn
+    ;;   (add-hook 'projectile-mode-hook 'ruby-guard))
+    ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
