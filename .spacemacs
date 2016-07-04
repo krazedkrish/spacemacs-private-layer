@@ -353,10 +353,10 @@ layers configuration. You are free to put any user code."
   ;; ;;              (ggtags-mode 1))))
   ;;               (helm-gtags-mode 1))))
 
-  ;; shell configs
-  load .bashrc for shell commands( like run bundel exec rails server)
-  (setq shell-file-name "bash")
-  (setq shell-command-switch "-ic")
+  ;; ;; shell configs
+  ;; load .bashrc for shell commands( like run bundel exec rails server)
+  ;; (setq shell-file-name "bash")
+  ;; (setq shell-command-switch "-ic")
   
   )
 
