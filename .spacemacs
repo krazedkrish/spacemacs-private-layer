@@ -157,10 +157,10 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 16
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.3)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -315,6 +315,7 @@ layers configuration. You are free to put any user code."
 
   ;; Loads some modes on startup
   (indent-guide-global-mode 1)
+  (setq-default dotspacemacs-line-numbers t)
 
   ;; JSX in `web-mode`
   ;; (add-to-list 'auto-mode-alist '("\\.tmpl" . web-mode))
