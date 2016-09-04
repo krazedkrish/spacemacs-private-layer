@@ -43,7 +43,7 @@
       "pgu" 'helm-gtags-update-tags
       "pgFf" 'helm-gtags-find-files
       "pgFp" 'helm-gtags-find-pattern
-      "pgFs" 'helm-gtags-find-symbols
+      "pgFs" 'helm-gtags-find-symbol
       "pgFt" 'helm-gtags-find-tag-from-here)))
 
 (defun spacemacs/ggtags-enable-eldoc (mode)

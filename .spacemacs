@@ -42,6 +42,7 @@ values."
      better-defaults
      ;; chrome
      ;;django
+     dash
      emacs-lisp
      emoji
      floobits
@@ -68,6 +69,8 @@ values."
      shell-scripts
      spell-checking
      syntax-checking
+     themes-megapack
+     tmux
      version-control
      yaml
 
@@ -81,7 +84,8 @@ values."
      phabricator
      ;;simple-rtm
      chrome
-     ;;extravagant-powerline
+     ;; extravagant-powerline
+     vim-powerline
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -149,8 +153,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-light
-                         solarized-dark
-                         solarized-light
+                         zenburn
+                         sanityinc-solarized-light
+                         sanityinc-solarized-dark
                          leuven)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -315,6 +320,7 @@ layers configuration. You are free to put any user code."
 
   ;; Loads some modes on startup
   (indent-guide-global-mode 1)
+  (global-linum-mode 1)
 
   ;; JSX in `web-mode`
   ;; (add-to-list 'auto-mode-alist '("\\.tmpl" . web-mode))
@@ -357,7 +363,8 @@ layers configuration. You are free to put any user code."
   ;; load .bashrc for shell commands( like run bundel exec rails server)
   ;; (setq shell-file-name "bash")
   ;; (setq shell-command-switch "-ic")
-  
+
+  (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -367,10 +374,37 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(send-mail-function (quote smtpmail-send-it)))
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-color "#343d46" t)
+ '(org-agenda-files (quote ("~/.emacs.d/layers/+vim/vim-powerline/README.org")))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#bf616a")
+     (40 . "#DCA432")
+     (60 . "#ebcb8b")
+     (80 . "#B4EB89")
+     (100 . "#89EBCA")
+     (120 . "#89AAEB")
+     (140 . "#C189EB")
+     (160 . "#bf616a")
+     (180 . "#DCA432")
+     (200 . "#ebcb8b")
+     (220 . "#B4EB89")
+     (240 . "#89EBCA")
+     (260 . "#89AAEB")
+     (280 . "#C189EB")
+     (300 . "#bf616a")
+     (320 . "#DCA432")
+     (340 . "#ebcb8b")
+     (360 . "#B4EB89"))))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))
