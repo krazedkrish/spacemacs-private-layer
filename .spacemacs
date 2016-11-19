@@ -55,6 +55,7 @@ values."
      javascript
      lua
      markdown
+     nginx
      org
      python
      ;; ranger
@@ -363,6 +364,11 @@ layers configuration. You are free to put any user code."
   ;; load .bashrc for shell commands( like run bundel exec rails server)
   ;; (setq shell-file-name "bash")
   ;; (setq shell-command-switch "-ic")
+  (with-eval-after-load 'org-agenda
+    (setq org-agenda-diary-file "~/org/diary.org" )
+    (setq org-agenda-files (list "~/org/home.org",
+                                 "~/org/petprojects.org",
+                                 "~/org/work.org")))
 
   (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
   )

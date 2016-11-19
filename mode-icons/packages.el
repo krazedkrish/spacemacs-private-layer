@@ -21,6 +21,5 @@
         ))
 
 (defun mode-icons/init-mode-icons()
-  (require 'mode-icons)
-  (mode-icons-mode 1)
-  )
+  (use-package mode-icons
+    :defer t))
