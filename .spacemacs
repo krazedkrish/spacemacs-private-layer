@@ -384,7 +384,7 @@ layers configuration. You are free to put any user code."
    [default bold shadow italic underline bold bold-italic bold])
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#343d46" t)
- '(org-agenda-files (quote ("~/.emacs.d/layers/+vim/vim-powerline/README.org")))
+ '(org-agenda-files (quote ("~/org/home.org")))
  '(send-mail-function (quote smtpmail-send-it))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
