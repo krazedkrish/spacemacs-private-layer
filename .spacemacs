@@ -86,7 +86,6 @@ values."
      ;;simple-rtm
      chrome
      ;; extravagant-powerline
-     vim-powerline
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -368,7 +367,11 @@ layers configuration. You are free to put any user code."
     (setq org-agenda-diary-file "~/org/diary.org" )
     (setq org-agenda-files (list "~/org/home.org",
                                  "~/org/petprojects.org",
-                                 "~/org/work.org")))
+                                 "~/org/work.org"))
+    (add-hook 'org-pomodoro-break-finished-hook
+              (lambda ()
+                (interactive)
+                (org-pomodoro '(16)))))
 
   (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
   )
@@ -384,7 +387,7 @@ layers configuration. You are free to put any user code."
    [default bold shadow italic underline bold bold-italic bold])
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#343d46" t)
- '(org-agenda-files (quote ("~/org/home.org")))
+ '(org-agenda-files (quote ("~/org/work.org")))
  '(send-mail-function (quote smtpmail-send-it))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
