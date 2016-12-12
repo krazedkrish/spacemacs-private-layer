@@ -372,8 +372,6 @@ layers configuration. You are free to put any user code."
               (lambda ()
                 (interactive)
                 (org-pomodoro '(16)))))
-
-  (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

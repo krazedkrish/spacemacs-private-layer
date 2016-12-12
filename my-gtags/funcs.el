@@ -19,6 +19,9 @@
     (helm-gtags-dwim)))
 
 (defun spacemacs/helm-gtags-define-keys-for-mode (mode)
+  "Define mouse binding"
+  (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
+
   "Define key bindings for the specific MODE."
   (when (fboundp mode)
     (let ((hook (intern (concat (symbol-name mode) "-hook"))))
