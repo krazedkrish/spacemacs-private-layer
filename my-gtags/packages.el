@@ -1,28 +1,69 @@
-;;; packages.el --- gtags Layer packages File for Spacemacs
+;;; packages.el --- my-gtags Layer packages File for Spacemacs
 ;;
-;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
 ;; Author: Sylvain Benner <sylvain.benner@gmail.com>
+;;    and: Christian E. Hopps <chopps@gmail.com>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
 
-(setq my-gtags-packages
+(defconst my-gtags-packages
   '(
-    (helm-gtags :toggle (configuration-layer/package-usedp 'helm))
     ggtags
+    helm-gtags
     ))
 
 (defun my-gtags/init-ggtags ()
   (use-package ggtags
-    :defer t))
+    :defer t
+    :init
+    (progn
+      ;; modes that do not have a layer, add here.
+      (add-hook 'awk-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
+      (add-hook 'shell-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
+      (add-hook 'tcl-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
+      (add-hook 'vhdl-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
+
+      (dolist (mode 'ggtags-mode)
+        
+        ;;"Define mouse binding"
+        (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
+
+        ;; handlers, if it does a reasonable job in ALL modes.
+        (spacemacs/declare-prefix-for-mode mode "pg" "gtags")
+        (spacemacs/set-leader-keys
+          "pgc" 'ggtags-create-tags
+          "pgd" 'ggtags-find-definition
+          "pgf" 'ggtags-find-file
+          "pgg" 'ggtags-find-tag-dwim
+          "pgg" 'ggtags-grep
+          "pgG" 'ggtags-dwim-other-window
+          "pgs" 'ggtags-find-other-symbol
+          "pgt" 'ggtags-find-tag-continue
+          "pgr" 'ggtags-find-reference
+          "pgn" 'ggtags-next-mark
+          "pgp" 'ggtags-prev-mark
+          "pgR" 'ggtags-read-tag
+          "pgu" 'ggtags-update-tags)
+        ))
+    :config
+    (when (configuration-layer/package-usedp 'helm-gtags)
+      ;; If anyone uses helm-gtags, they would want to use these key bindings.
+      ;; These are bound in `ggtags-mode-map', since the functionality of
+      ;; `helm-gtags-mode' is basically entirely contained within
+      ;; `ggtags-mode-map' --- this way we don't have to enable both.
+      ;; Note: all of these functions are autoloadable.
+      (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+      (define-key ggtags-mode-map (kbd "C-x 4 .") 'helm-gtags-find-tag-other-window)
+      (define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+      (define-key ggtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack))))
 
 (defun my-gtags/init-helm-gtags ()
   (use-package helm-gtags
     :defer t
-    :diminish helm-gtags-mode
     :init
     (progn
       (setq helm-gtags-ignore-case t
@@ -31,26 +72,8 @@
             helm-gtags-pulse-at-cursor t)
       ;; modes that do not have a layer, define here
       (spacemacs/helm-gtags-define-keys-for-mode 'tcl-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'java-mode)
       (spacemacs/helm-gtags-define-keys-for-mode 'vhdl-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'shell-script-mode)
       (spacemacs/helm-gtags-define-keys-for-mode 'awk-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'asm-mode)
       (spacemacs/helm-gtags-define-keys-for-mode 'dired-mode)
       (spacemacs/helm-gtags-define-keys-for-mode 'compilation-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'shell-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'ruby-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
-
-      (spacemacs/ggtags-enable-eldoc 'tcl-mode)
-      (spacemacs/ggtags-enable-eldoc 'java-mode)
-      (spacemacs/ggtags-enable-eldoc 'vhdl-mode)
-      (spacemacs/ggtags-enable-eldoc 'ruby-mode)
-      (spacemacs/ggtags-enable-eldoc 'python-mode))
-    :config
-    (progn
-      ;; if anyone uses helm-gtags, they would want to use these key bindings
-      (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-      (define-key helm-gtags-mode-map (kbd "C-x 4 .") 'helm-gtags-find-tag-other-window)
-      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-      (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack))))
+      (spacemacs/helm-gtags-define-keys-for-mode 'shell-mode))))
