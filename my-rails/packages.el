@@ -16,7 +16,8 @@
     '(
       ;; package names go here
       evil-rails
-      ruby-guard
+      ;;ruby-guard
+      robe
       ))
 
 ;; List of packages to exclude.
@@ -43,7 +44,13 @@
     ;; (progn
     ;;   (add-hook 'projectile-mode-hook 'ruby-guard))
     ))
-;;
+(defun my-rails/init-robe()
+  (use-package robe
+    :defer t)
+  (global-set-key (kbd "C-c C-j") 'robe-jump)
+  )
+
+
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package

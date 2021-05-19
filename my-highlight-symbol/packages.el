@@ -12,14 +12,22 @@
 
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
-(setq highlight-symbol-packages
+(setq my-highlight-symbol-packages
     '(
       highlight-symbol
       ;; package names go here
       ))
 
 ;; List of packages to exclude.
-(setq highlight-symbol-excluded-packages '())
+(setq my-highlight-symbol-excluded-packages '())
+
+(defun my-highlight-symbol/init-highlight-symbol ()
+  (use-package highlight-symbol
+    :defer t
+    :init
+    (progn
+      ;; (global-set-key [C-S-mouse-1] 'highlight-symbol-at-point)
+      )))
 
 ;; For each package, define a function %LAYERNAME%/init-<package-name>
 ;;
