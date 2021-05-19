@@ -1,4 +1,4 @@
-;;; extensions.el --- highlight-symbol Layer extensions File for Spacemacs
+;;; extensions.el --- my-highlight-symbol Layer extensions File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
@@ -10,19 +10,19 @@
 ;;
 ;;; License: GPLv3
 
-(setq highlight-symbol-pre-extensions
+(setq my-highlight-symbol-pre-extensions
       '(
         ;; pre extension names go here
         ))
 
-(setq highlight-symbol-post-extensions
+(setq my-highlight-symbol-post-extensions
       '(
         ;; post extension names go here
         ))
 
-;; For each extension, define a function highlight-symbol/init-<extension-name>
+;; For each extension, define a function my-highlight-symbol/init-<extension-name>
 ;;
-;; (defun highlight-symbol/init-my-extension ()
+;; (defun my-highlight-symbol/init-my-extension ()
 ;;   "Initialize my extension"
 ;;   )
 ;;

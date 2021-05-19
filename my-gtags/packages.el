@@ -13,7 +13,7 @@
 (defconst my-gtags-packages
   '(
     ggtags
-    helm-gtags
+;;    helm-gtags
     ))
 
 (defun my-gtags/init-ggtags ()
@@ -27,53 +27,53 @@
       (add-hook 'tcl-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
       (add-hook 'vhdl-mode-local-vars-hook #'spacemacs/ggtags-mode-enable)
 
-      (dolist (mode 'ggtags-mode)
-        
-        ;;"Define mouse binding"
-        (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
+      ;;(dolist (mode 'ggtags-mode)
+      ;;"Define mouse binding"
+      (global-set-key [(meta shift mouse-1)] 'ggtags-find-tag-mouse)
 
-        ;; handlers, if it does a reasonable job in ALL modes.
-        (spacemacs/declare-prefix-for-mode mode "pg" "gtags")
-        (spacemacs/set-leader-keys
-          "pgc" 'ggtags-create-tags
-          "pgd" 'ggtags-find-definition
-          "pgf" 'ggtags-find-file
-          "pgg" 'ggtags-find-tag-dwim
-          "pgg" 'ggtags-grep
-          "pgG" 'ggtags-dwim-other-window
-          "pgs" 'ggtags-find-other-symbol
-          "pgt" 'ggtags-find-tag-continue
-          "pgr" 'ggtags-find-reference
-          "pgn" 'ggtags-next-mark
-          "pgp" 'ggtags-prev-mark
-          "pgR" 'ggtags-read-tag
-          "pgu" 'ggtags-update-tags)
-        ))
+      (spacemacs/declare-prefix "pw" "ggtags")
+      (spacemacs/set-leader-keys
+        "pwc" 'ggtags-create-tags
+        "pwd" 'ggtags-find-definition
+      ;;   "pwf" 'ggtags-find-file
+        "pwf" 'ggtags-find-tag-dwim
+        "pwF" 'ggtags-find-tag-continue
+        "pwg" 'ggtags-grep
+        "pwo" 'ggtags-dwim-other-window
+      ;;   "pws" 'ggtags-find-other-symbol
+        "pwt" 'ggtags-find-tag-continue
+      ;;   "pwr" 'ggtags-find-reference
+      ;;   "pwn" 'ggtags-next-mark
+      ;;   "pwp" 'ggtags-prev-mark
+      ;;   "pwR" 'ggtags-read-tag
+        "pwu" 'ggtags-update-tags)
+        )
     :config
     (when (configuration-layer/package-usedp 'helm-gtags)
-      ;; If anyone uses helm-gtags, they would want to use these key bindings.
-      ;; These are bound in `ggtags-mode-map', since the functionality of
-      ;; `helm-gtags-mode' is basically entirely contained within
-      ;; `ggtags-mode-map' --- this way we don't have to enable both.
-      ;; Note: all of these functions are autoloadable.
-      (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-      (define-key ggtags-mode-map (kbd "C-x 4 .") 'helm-gtags-find-tag-other-window)
-      (define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-      (define-key ggtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack))))
+      ;; ;; If anyone uses helm-gtags, they would want to use these key bindings.
+      ;; ;; These are bound in `ggtags-mode-map', since the functionality of
+      ;; ;; `helm-gtags-mode' is basically entirely contained within
+      ;; ;; `ggtags-mode-map' --- this way we don't have to enable both.
+      ;; ;; Note: all of these functions are autoloadable.
+      ;; (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+      ;; (define-key ggtags-mode-map (kbd "C-x 4 .") 'helm-gtags-find-tag-other-window)
+      ;; (define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+      ;; (define-key ggtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)
+      )))
 
-(defun my-gtags/init-helm-gtags ()
-  (use-package helm-gtags
-    :defer t
-    :init
-    (progn
-      (setq helm-gtags-ignore-case t
-            helm-gtags-auto-update t
-            helm-gtags-use-input-at-cursor t
-            helm-gtags-pulse-at-cursor t)
-      ;; modes that do not have a layer, define here
-      (spacemacs/helm-gtags-define-keys-for-mode 'tcl-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'vhdl-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'awk-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'dired-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'compilation-mode)
-      (spacemacs/helm-gtags-define-keys-for-mode 'shell-mode))))
+;; (defun my-gtags/init-helm-gtags ()
+;;   (use-package helm-gtags
+;;     :defer t
+;;     :init
+;;     (progn
+;;       (setq helm-gtags-ignore-case t
+;;             helm-gtags-auto-update t
+;;             helm-gtags-use-input-at-cursor t
+;;             helm-gtags-pulse-at-cursor t)
+;;       ;; modes that do not have a layer, define here
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'tcl-mode)
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'vhdl-mode)
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'awk-mode)
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'dired-mode)
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'compilation-mode)
+;;       (spacemacs/helm-gtags-define-keys-for-mode 'shell-mode))))
